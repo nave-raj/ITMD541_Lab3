@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if((billTotal <=0 || billTotal == null)){
             alert("Please Enter a Valid Bill Amount");
             document.getElementById('tip').value = 0;
-            document.getElementById('tipPercentage').value = null;
-            document.getElementById('billTotal').value = null;
-            document.getElementById('tipAmount').value = null;
-            document.getElementById('totalBillWithTip').value = null;
+            document.getElementById('tipPercentage').value = "";
+            document.getElementById('billTotal').value = "";
+            document.getElementById('tipAmount').value = "";
+            document.getElementById('totalBillWithTip').value = "";
             return;
         }   
 
