@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('change', calculateTotalBill);
 
     function calculateTotalBill () {
-        const billTotal = parseFloat(document.getElementById('billTotal').value) || 0;
+        const billTotal = parseFloat(document.getElementById('billTotal').value);
         const tip = parseFloat(document.getElementById('tip').value);
         const tipAmount = (billTotal * tip) / 100;
         const totalBillWithTip = billTotal + tipAmount;
 
-        if((billTotal <=0 || billTotal == null) && tip > 0){
+        if((billTotal <=0 || billTotal == null)){
             alert("Please Enter a Valid Bill Amount");
             document.getElementById('tip').value = 0;
             document.getElementById('tipPercentage').value = null;
