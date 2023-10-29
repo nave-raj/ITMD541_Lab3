@@ -5,12 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('change', calculateTotalBill);
 
     function calculateTotalBill () {
-        const billTotal = parseFloat(document.getElementById('billTotal').value);
-        const tip = parseFloat(document.getElementById('tip').value);
-        const tipAmount = (billTotal * tip) / 100;
-        const totalBillWithTip = billTotal + tipAmount;
-
-        if((billTotal <=0 || billTotal == null)){
+        let billTotal = document.getElementById('billTotal').value;
+        const regex = /^[0-9]+$/;
+        if((!billTotal.match(regex)) && billTotal.length > 0){
             alert("Please Enter a Valid Bill Amount");
             document.getElementById('tip').value = 0;
             document.getElementById('tipPercentage').value = "";
@@ -18,6 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('tipAmount').value = "";
             document.getElementById('totalBillWithTip').value = "";
             return;
+        }
+        billTotal = isNaN(parseFloat(billTotal)) ? 0 : parseFloat(billTotal);
+        const tip = parseFloat(document.getElementById('tip').value);
+        const tipAmount = (billTotal * tip) / 100;
+        const totalBillWithTip = billTotal + tipAmount;
+
+        if((billTotal < 0 || billTotal == null)){
+            alert("Please Enter a Valid Bill Amount");
+           
         }   
 
         document.getElementById('tipPercentage').value = tip.toFixed(2);
@@ -26,4 +32,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-
