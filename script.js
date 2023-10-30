@@ -6,14 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function calculateTotalBill () {
         let billTotal = document.getElementById('billTotal').value;
-        const regex = /^[0-9]+$/;
-        if((!billTotal.match(regex))&& billTotal.length > 0){
+        const regex1 = /[a-zA-Z]/;
+        const regex2 = /[+-]/;
+        if(billTotal.match(regex1) || billTotal.match(regex2) || billTotal === ""){
             alert("Please Enter a Valid Bill Amount");
             document.getElementById('tip').value = 0;
             document.getElementById('tipPercentage').value = "";
             document.getElementById('billTotal').value = "";
             document.getElementById('tipAmount').value = "";
             document.getElementById('totalBillWithTip').value = "";
+            event.stopPropogation();
             return;
         }
         billTotal = isNaN(parseFloat(billTotal)) ? 0 : parseFloat(billTotal);
