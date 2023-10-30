@@ -46,6 +46,11 @@ input[type="range"] {
     }
 
     input {
+        width: 90%;
         margin-bottom: 10px;
+    }
+
+    input[type="range"] {
+        width: 90%;
     }
 }
